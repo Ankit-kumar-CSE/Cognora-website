@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: free
 
-    buildCommand: npm install && npm install --prefix Frontend && npm run build --prefix Frontend && npm install --prefix Backend --omit=dev
+    buildCommand: npm install --prefix Frontend && npm run build --prefix Frontend && npm install --prefix Backend
 
     startCommand: node Backend/index.js
 
@@ -13,7 +13,6 @@ services:
       - key: NODE_ENV
         value: production
 
-      # TODO: Uncomment and fill in once your installers are uploaded
       # - key: DOWNLOAD_WIN_URL
       #   value: https://github.com/<your-username>/focusguard/releases/download/v1.0.0/FocusGuard-Setup.exe
       # - key: DOWNLOAD_MAC_URL
