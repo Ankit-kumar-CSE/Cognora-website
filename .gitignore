@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.log
+
+# Frontend build output
+Frontend/dist/
+
+# Backend installer files (add your own .exe / .dmg here when ready)
+Backend/downloads/
