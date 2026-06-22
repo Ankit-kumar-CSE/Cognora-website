@@ -1,28 +1,13 @@
-# ──────────────────────────────────────────────────────────────────────────────
-# render.yaml — Render.com deployment configuration
-#
-# SETUP STEPS:
-#  1. Push this repo to GitHub.
-#  2. Go to https://dashboard.render.com → New → Web Service → Connect your repo.
-#  3. Render will auto-detect this file and fill in the settings.
-#  4. After first deploy, go to Environment → add these variables:
-#       NODE_ENV          = production
-#       DOWNLOAD_WIN_URL  = <your .exe download URL>   ← add when ready
-#       DOWNLOAD_MAC_URL  = <your .dmg download URL>   ← add when ready
-# ──────────────────────────────────────────────────────────────────────────────
-
 services:
   - type: web
     name: focusguard
     runtime: node
-    region: oregon        # closest free-tier region; change to frankfurt for EU
+    region: oregon
     plan: free
 
-    # Build: install frontend deps → build React app → install backend deps
-    buildCommand: cd Frontend && npm install && npm run build && cd ../Backend && npm install --omit=dev
+    buildCommand: npm install && npm install --prefix Frontend && npm run build --prefix Frontend && npm install --prefix Backend --omit=dev
 
-    # Start: run the Express server (serves API + built React app)
-    startCommand: cd Backend && node index.js
+    startCommand: node Backend/index.js
 
     envVars:
       - key: NODE_ENV
@@ -34,5 +19,4 @@ services:
       # - key: DOWNLOAD_MAC_URL
       #   value: https://github.com/<your-username>/focusguard/releases/download/v1.0.0/FocusGuard.dmg
 
-    # Render automatically sets PORT — no need to hard-code it
     healthCheckPath: /api/health
