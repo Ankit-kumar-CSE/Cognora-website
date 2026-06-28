@@ -2,7 +2,7 @@ import React from "react";
 import { Grid2x2, Laptop, ArrowRight } from "lucide-react";
 import Working from "../pages/working";
 import Cards from "../Card/cards";
-import appPreview from "../assets/pic.jpg";
+import appPreview from "../assets/pic.png";
 
 
 const Entry = () => {
