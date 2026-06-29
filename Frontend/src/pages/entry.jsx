@@ -52,7 +52,7 @@ const Entry = () => {
             <img
               src={appPreview}
               className="relative rounded-2xl w-full max-w-md object-cover shadow-2xl border border-[#263143]"
-              alt="Cognora app preview"
+              alt="Coggnora app preview"
             />
           </div>
         </div>

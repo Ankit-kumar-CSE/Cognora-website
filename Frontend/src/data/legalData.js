@@ -11,7 +11,7 @@ export const LEGAL_CONTENT = {
     sections: [
       {
         heading: null,
-        body: 'These Terms & Conditions govern your use of Cognora. By downloading or using Cognora, you agree to these Terms.',
+        body: 'These Terms & Conditions govern your use of Coggnora. By downloading or using Coggnora, you agree to these Terms.',
       },
       {
         heading: '1. Eligibility',
@@ -27,7 +27,7 @@ export const LEGAL_CONTENT = {
         body: null,
         plans: [
           { name: 'Basic Plan', price: '₹9', desc: 'Includes selected productivity features.' },
-          { name: 'Premium Plan', price: '₹19', desc: 'Includes all available Cognora features.' },
+          { name: 'Premium Plan', price: '₹19', desc: 'Includes all available Coggnora features.' },
         ],
         note: 'Features may change over time as the application evolves.',
       },
@@ -46,14 +46,14 @@ export const LEGAL_CONTENT = {
           'Reverse engineer the software',
           'Modify the application without permission',
           'Redistribute the software',
-          'Sell copies of Cognora',
+          'Sell copies of Coggnora',
           'Circumvent subscription verification',
           'Disable security mechanisms',
         ],
       },
       {
         heading: '7. Break Feature',
-        body: 'Cognora allows users to activate Break Mode. The maximum break duration is 4 hours. Once a break ends, another break cannot be started for 72 hours.',
+        body: 'Coggnora allows users to activate Break Mode. The maximum break duration is 4 hours. Once a break ends, another break cannot be started for 72 hours.',
       },
       {
         heading: '8. Updates',
@@ -61,7 +61,7 @@ export const LEGAL_CONTENT = {
       },
       {
         heading: '9. Limitation of Liability',
-        body: 'Cognora is provided "as is." We are not responsible for:',
+        body: 'Coggnora is provided "as is." We are not responsible for:',
         bullets: [
           'Loss of productivity',
           'Data loss caused by user actions',
@@ -86,11 +86,11 @@ export const LEGAL_CONTENT = {
     sections: [
       {
         heading: null,
-        body: 'Welcome to Cognora ("Cognora", "we", "our", or "us"). Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, where it is stored, and your rights regarding your information.\n\nBy downloading, installing, or using Cognora, you agree to this Privacy Policy.',
+        body: 'Welcome to Coggnora ("Coggnora", "we", "our", or "us"). Your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, where it is stored, and your rights regarding your information.\n\nBy downloading, installing, or using Coggnora, you agree to this Privacy Policy.',
       },
       {
-        heading: '1. About Cognora',
-        body: 'Cognora is a desktop productivity application designed to help users improve focus while studying or working. It monitors active desktop applications and browser activity (through the optional Cognora browser extension), provides distraction reminders, blocks selected applications and websites, and generates productivity statistics.',
+        heading: '1. About Coggnora',
+        body: 'Coggnora is a desktop productivity application designed to help users improve focus while studying or working. It monitors active desktop applications and browser activity (through the optional Coggnora browser extension), provides distraction reminders, blocks selected applications and websites, and generates productivity statistics.',
       },
       {
         heading: '2. Information We Collect',
@@ -103,7 +103,7 @@ export const LEGAL_CONTENT = {
           },
           {
             subHeading: 'Productivity Data',
-            body: 'Cognora stores productivity information locally on your computer. This includes:',
+            body: 'Coggnora stores productivity information locally on your computer. This includes:',
             bullets: ['Active application names', 'Active website URLs (received from the browser extension)', 'Focus time', 'Study time', 'Work time', 'Distraction time', 'Break sessions', 'Daily productivity statistics', 'Monthly productivity history'],
             note: 'This data is retained on your device for approximately 60 days unless you delete it. We do not upload this productivity data to our servers unless a future feature explicitly requires your consent.',
           },
@@ -116,7 +116,7 @@ export const LEGAL_CONTENT = {
       },
       {
         heading: '3. Cookies',
-        body: 'Cognora does not use cookies within the desktop application. Our website may use essential technical cookies if required for login or payment processing.',
+        body: 'Coggnora does not use cookies within the desktop application. Our website may use essential technical cookies if required for login or payment processing.',
       },
       {
         heading: '4. How We Use Information',
@@ -147,28 +147,28 @@ export const LEGAL_CONTENT = {
       },
       {
         heading: '9. Children\'s Privacy',
-        body: 'Cognora is not intended for children under 13 years of age.',
+        body: 'Coggnora is not intended for children under 13 years of age.',
       },
       {
         heading: '10. Changes',
-        body: 'We may update this Privacy Policy periodically. Continued use of Cognora after changes become effective constitutes acceptance of the updated policy.',
+        body: 'We may update this Privacy Policy periodically. Continued use of Coggnora after changes become effective constitutes acceptance of the updated policy.',
       },
       {
         heading: '11. Contact',
-        body: 'For questions regarding privacy, please contact us through the official Cognora website.',
+        body: 'For questions regarding privacy, please contact us through the official Coggnora website.',
       },
     ],
   },
   licenses: {
     title: 'Third-Party Licenses',
     effectiveDate: 'June 14, 2026',
-    intro: 'Cognora includes third-party open-source software. These components are licensed under their own respective licenses and remain the intellectual property of their respective copyright holders.',
+    intro: 'Coggnora includes third-party open-source software. These components are licensed under their own respective licenses and remain the intellectual property of their respective copyright holders.',
     libs: [
-      { name: 'Electron', url: 'https://www.electronjs.org/', license: 'MIT License', purpose: 'Provides the desktop application framework used to build Cognora.', copyright: 'Copyright © OpenJS Foundation and Electron contributors.' },
+      { name: 'Electron', url: 'https://www.electronjs.org/', license: 'MIT License', purpose: 'Provides the desktop application framework used to build Coggnora.', copyright: 'Copyright © OpenJS Foundation and Electron contributors.' },
       { name: 'Chromium', url: 'https://www.chromium.org/', license: 'BSD-style License', purpose: 'Provides the embedded browser engine used internally by Electron.' },
       { name: 'Node.js', url: 'https://nodejs.org/', license: 'MIT License', purpose: 'Provides the JavaScript runtime environment for the desktop application.', copyright: 'Copyright © OpenJS Foundation and Node.js contributors.' },
-      { name: 'Electron Builder', url: 'https://www.electron.build/', license: 'MIT License', purpose: 'Used to package and distribute Cognora for Windows, macOS, and Linux.' },
-      { name: 'Express', url: 'https://expressjs.com/', license: 'MIT License', purpose: 'Provides the local HTTP server used by Cognora.' },
+      { name: 'Electron Builder', url: 'https://www.electron.build/', license: 'MIT License', purpose: 'Used to package and distribute Coggnora for Windows, macOS, and Linux.' },
+      { name: 'Express', url: 'https://expressjs.com/', license: 'MIT License', purpose: 'Provides the local HTTP server used by Coggnora.' },
       { name: 'Axios', url: 'https://axios-http.com/', license: 'MIT License', purpose: 'Handles HTTP requests between the desktop application and backend services.' },
       { name: 'CORS', url: 'https://github.com/expressjs/cors', license: 'MIT License', purpose: 'Enables secure Cross-Origin Resource Sharing (CORS) for local server communication.' },
       { name: 'dotenv', url: 'https://github.com/motdotla/dotenv', license: 'BSD-2-Clause License', purpose: 'Loads environment variables from configuration files.' },

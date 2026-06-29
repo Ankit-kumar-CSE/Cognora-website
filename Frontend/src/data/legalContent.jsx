@@ -138,9 +138,9 @@ export const LicensesContent = ({ data }) => (
     <div className="bg-[#0d1f3c] border border-[#1a2d4a] rounded-xl p-4 mt-2">
       <h4 className="text-white font-semibold text-sm mb-2">Additional Dependencies</h4>
       <p className="text-[#a0acc2] text-xs leading-relaxed">
-        Cognora also includes numerous indirect (transitive) dependencies installed by npm, distributed under various open-source licenses including MIT, BSD, BSD-2-Clause, BSD-3-Clause, ISC, Apache 2.0, and others. All third-party libraries remain the property of their respective copyright holders.
+        Coggnora also includes numerous indirect (transitive) dependencies installed by npm, distributed under various open-source licenses including MIT, BSD, BSD-2-Clause, BSD-3-Clause, ISC, Apache 2.0, and others. All third-party libraries remain the property of their respective copyright holders.
       </p>
     </div>
-    <p className="text-[#4a5568] text-xs mt-4">© 2026 Cognora. All rights reserved. Third-party trademarks, logos, software, and copyrights remain the property of their respective owners.</p>
+    <p className="text-[#4a5568] text-xs mt-4">© 2026 Coggnora. All rights reserved. Third-party trademarks, logos, software, and copyrights remain the property of their respective owners.</p>
   </div>
 )

@@ -13,11 +13,11 @@ const Footer = () => {
         {/* Logo */}
         <div className='flex items-center gap-3'>
           <div className='w-8 h-8 rounded-lg bg-[#00f5d4] flex items-center justify-center shadow-[0_0_12px_rgba(0,245,212,0.4)]'>
-            <img src={logo} alt='Cognora Icon' className='w-full h-full rounded-lg object-cover' />
+            <img src={logo} alt='Coggnora Icon' className='w-full h-full rounded-lg object-cover' />
           </div>
           <div>
-            <span className='font-bold text-white'>Cog<span className='text-[#00f5d4]'>nora</span></span>
-            <p className='text-[#4a5568] text-xs'>© 2026 Cognora. All rights reserved.</p>
+            <span className='font-bold text-white'>Cogg<span className='text-[#00f5d4]'>nora</span></span>
+            <p className='text-[#4a5568] text-xs'>© 2026 Coggnora. All rights reserved.</p>
           </div>
         </div>
 
