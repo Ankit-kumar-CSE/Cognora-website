@@ -1,7 +1,7 @@
 {
-  "name": "cognora-website",
+  "name": "coggnora-website",
   "version": "1.0.0",
-  "description": "Cognora landing page — monorepo root scripts",
+  "description": "Coggnora landing page — monorepo root scripts",
   "private": true,
   "scripts": {
     "dev": "concurrently -n FRONTEND,BACKEND -c cyan,green \"npm run dev --prefix Frontend\" \"npm run dev --prefix Backend\"",

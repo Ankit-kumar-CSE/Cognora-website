@@ -34,18 +34,18 @@ app.get('/api/health', (_req, res) => {
 //  │  1. Build & upload your installer to GitHub Releases (or any CDN).
 //  │  2. Copy the direct download URL.
 //  │  3. Set it in  Backend/.env  and in Render's Environment dashboard:
-//  │        DOWNLOAD_WIN_URL=https://github.com/<you>/cognora/releases/download/v1.0.0/Cognora-Setup.exe
-//  │        DOWNLOAD_MAC_URL=https://github.com/<you>/cognora/releases/download/v1.0.0/Cognora.dmg
+//  │        DOWNLOAD_WIN_URL=https://github.com/<you>/coggnora/releases/download/v1.0.0/Coggnora-Setup.exe
+//  │        DOWNLOAD_MAC_URL=https://github.com/<you>/coggnora/releases/download/v1.0.0/Coggnora.dmg
 //  │  No code changes needed — the redirect below picks it up automatically.
 //  │
 //  └─ OPTION B: Serve the file directly from this server ───────────────────────
 //     1. Create a folder:  Backend/downloads/
 //     2. Place your installer there:
-//           Backend/downloads/Cognora-Setup.exe   ← Windows
-//           Backend/downloads/Cognora.dmg         ← macOS
+//           Backend/downloads/Coggnora-Setup.exe   ← Windows
+//           Backend/downloads/Coggnora.dmg         ← macOS
 //     3. Replace the res.redirect(...) lines below with:
-//           res.download(path.join(__dirname, 'downloads', 'Cognora-Setup.exe'));
-//           res.download(path.join(__dirname, 'downloads', 'Cognora.dmg'));
+//           res.download(path.join(__dirname, 'downloads', 'Coggnora-Setup.exe'));
+//           res.download(path.join(__dirname, 'downloads', 'Coggnora.dmg'));
 //
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -105,7 +105,7 @@ if (isProd) {
 if (!isProd) {
   app.get('/', (_req, res) => {
     res.json({
-      message: 'Cognora backend is running in development mode.',
+      message: 'Coggnora backend is running in development mode.',
       hint: 'Frontend dev server is on http://localhost:5173. API health check: /api/health',
     });
   });
@@ -113,7 +113,7 @@ if (!isProd) {
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`✅ Cognora server running  →  http://localhost:${PORT}`);
+  console.log(`✅ Coggnora server running  →  http://localhost:${PORT}`);
   console.log(`   Mode: ${isProd ? 'production' : 'development'}`);
 });
  

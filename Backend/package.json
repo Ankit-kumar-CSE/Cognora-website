@@ -1,7 +1,7 @@
 {
-  "name": "cognora-backend",
+  "name": "coggnora-backend",
   "version": "1.0.0",
-  "description": "Cognora backend API server",
+  "description": "Coggnora backend API server",
   "license": "ISC",
   "author": "Ankit Kumar",
   "type": "module",

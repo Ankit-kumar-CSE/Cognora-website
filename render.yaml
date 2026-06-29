@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: cognora
+    name: coggnora
     runtime: node
     region: oregon
     plan: free
@@ -14,8 +14,8 @@ services:
         value: production
 
       # - key: DOWNLOAD_WIN_URL
-      #   value: https://github.com/<your-username>/cognora/releases/download/v1.0.0/Cognora-Setup.exe
+      #   value: https://github.com/<your-username>/coggnora/releases/download/v1.0.0/Coggnora-Setup.exe
       # - key: DOWNLOAD_MAC_URL
-      #   value: https://github.com/<your-username>/cognora/releases/download/v1.0.0/Cognora.dmg
+      #   value: https://github.com/<your-username>/coggnora/releases/download/v1.0.0/Coggnora.dmg
 
     healthCheckPath: /api/health
