@@ -87,6 +87,70 @@ app.get('/api/download/:platform', (req, res) => {
   return res.status(404).json({ message: 'Unknown platform. Use "windows" or "mac".' });
 });
 
+// ─── Contact Form Endpoint ─────────────────────────────────────────────────────
+//
+//  POST /api/contact
+//  Body: { name, email, subject, message }
+//
+//  To enable real email delivery, install nodemailer and configure SMTP:
+//    npm install nodemailer --prefix Backend
+//  Then set in Backend/.env:
+//    SMTP_HOST=smtp.gmail.com
+//    SMTP_PORT=587
+//    SMTP_USER=your@email.com
+//    SMTP_PASS=your_app_password
+//    CONTACT_TO=ankitjaat00010@gmail.com
+//
+// ─────────────────────────────────────────────────────────────────────────────
+app.post('/api/contact', async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  // Validation
+  if (!name || !email || !message) {
+    return res.status(400).json({
+      success: false,
+      error: 'Missing required fields: name, email, message.',
+    });
+  }
+
+  // Basic email format check
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ success: false, error: 'Invalid email address.' });
+  }
+
+  // ── Log contact (placeholder — replace with nodemailer when ready) ──
+  console.log('\n📬 [CONTACT FORM SUBMISSION]');
+  console.log(`   Name   : ${name}`);
+  console.log(`   Email  : ${email}`);
+  console.log(`   Subject: ${subject || '(none)'}`);
+  console.log(`   Message: ${message}`);
+  console.log(`   Time   : ${new Date().toISOString()}\n`);
+
+  // ── Nodemailer integration (uncomment when SMTP is configured) ────────
+  /*
+  import nodemailer from 'nodemailer';
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: false,
+    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+  });
+  await transporter.sendMail({
+    from: `"${name}" <${process.env.SMTP_USER}>`,
+    to: process.env.CONTACT_TO,
+    replyTo: email,
+    subject: subject ? `[Coggnora] ${subject}` : '[Coggnora] New Contact Message',
+    text: `From: ${name} <${email}>\n\n${message}`,
+  });
+  */
+
+  return res.status(200).json({
+    success: true,
+    message: "Message received! We'll respond within 24-48 hours.",
+  });
+});
+
 // ─── Serve Frontend in Production ─────────────────────────────────────────────
 // In production Render runs one Node process that serves both the API
 // and the compiled React app as static files.

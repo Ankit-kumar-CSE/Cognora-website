@@ -1,6 +1,136 @@
 @import "tailwindcss";
 
-/* Custom scrollbar for legal modal */
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS — CSS Custom Properties
+   Dark mode is default (data-theme="dark" on <html>)
+   Light mode applied via [data-theme="light"]
+──────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  /* Brand */
+  --color-brand: #00f5d4;
+  --color-brand-dim: #00d4b8;
+  --color-brand-glow: rgba(0, 245, 212, 0.35);
+  --color-brand-subtle: rgba(0, 245, 212, 0.08);
+
+  /* Backgrounds */
+  --color-bg: #071428;
+  --color-bg-elevated: #0d1f38;
+  --color-bg-card: #0f2040;
+  --color-bg-glass: rgba(13, 31, 56, 0.7);
+
+  /* Borders */
+  --color-border: #1a2d4a;
+  --color-border-subtle: #263143;
+  --color-border-brand: rgba(0, 245, 212, 0.3);
+
+  /* Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0acc2;
+  --color-text-muted: #4a5568;
+  --color-text-brand: #00f5d4;
+
+  /* Accent colors */
+  --color-accent-purple: #a78bfa;
+  --color-accent-amber: #fbbf24;
+  --color-accent-blue: #60a5fa;
+  --color-accent-pink: #f472b6;
+
+  /* Shadows */
+  --shadow-brand: 0 0 24px rgba(0, 245, 212, 0.4);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+  /* Navbar */
+  --color-nav-bg: rgba(7, 20, 40, 0.8);
+  --color-nav-border: rgba(26, 45, 74, 0.8);
+}
+
+[data-theme="light"] {
+  /* Brand */
+  --color-brand: #00a896;
+  --color-brand-dim: #007a6e;
+  --color-brand-glow: rgba(0, 168, 150, 0.25);
+  --color-brand-subtle: rgba(0, 168, 150, 0.08);
+
+  /* Backgrounds */
+  --color-bg: #f0f4ff;
+  --color-bg-elevated: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-bg-glass: rgba(255, 255, 255, 0.75);
+
+  /* Borders */
+  --color-border: #e2e8f0;
+  --color-border-subtle: #cbd5e1;
+  --color-border-brand: rgba(0, 168, 150, 0.3);
+
+  /* Text */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --color-text-brand: #00a896;
+
+  /* Accent colors */
+  --color-accent-purple: #7c3aed;
+  --color-accent-amber: #d97706;
+  --color-accent-blue: #2563eb;
+  --color-accent-pink: #db2777;
+
+  /* Shadows */
+  --shadow-brand: 0 0 20px rgba(0, 168, 150, 0.25);
+  --shadow-card: 0 4px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.12);
+
+  /* Navbar */
+  --color-nav-bg: rgba(240, 244, 255, 0.85);
+  --color-nav-border: rgba(226, 232, 240, 0.9);
+}
+
+/* ─────────────────────────────────────────────
+   BASE RESET & GLOBAL STYLES
+──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Text selection */
+::selection {
+  background-color: var(--color-brand-glow);
+  color: var(--color-text-primary);
+}
+
+/* ─────────────────────────────────────────────
+   CUSTOM SCROLLBAR
+──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand);
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 5px;
 }
@@ -8,9 +138,189 @@
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #1a2d4a;
+  background: var(--color-border);
   border-radius: 99px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #00f5d4;
+  background: var(--color-brand);
+}
+
+/* ─────────────────────────────────────────────
+   ANIMATION KEYFRAMES
+──────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px var(--color-brand-glow); }
+  50% { box-shadow: 0 0 40px var(--color-brand-glow), 0 0 60px var(--color-brand-glow); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY CLASSES
+──────────────────────────────────────────────── */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Shimmer loading effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-elevated) 25%,
+    var(--color-border) 50%,
+    var(--color-bg-elevated) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Glass morphism */
+.glass {
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+}
+
+/* Brand gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-accent-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section spacing */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* Container */
+.container-custom {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Page transition wrapper */
+.page-enter {
+  animation: slide-in-up 0.4s ease forwards;
+}
+
+/* Accordion */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Glow border */
+.glow-border {
+  border: 1px solid var(--color-border-brand);
+  box-shadow: 0 0 0 1px var(--color-brand-glow), inset 0 0 20px var(--color-brand-subtle);
 }

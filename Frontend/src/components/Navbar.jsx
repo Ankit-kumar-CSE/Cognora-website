@@ -24,7 +24,8 @@ const Navbar = () => {
             Support
           </a>
           <a
-            href={`${import.meta.env.VITE_API_URL}/api/download/windows`}
+            // href={`${import.meta.env.VITE_API_URL}/api/download/windows`}
+            href={import.meta.env.VITE_API_URL}
             className='bg-[#00f5d4] text-[#071428] text-sm font-bold px-5 py-2 rounded-lg hover:bg-[#00d4b8] transition-colors shadow-[0_0_16px_rgba(0,245,212,0.35)]'
           >
             Download

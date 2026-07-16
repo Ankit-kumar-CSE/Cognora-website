@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or API paths
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://coggnora.app/sitemap.xml
