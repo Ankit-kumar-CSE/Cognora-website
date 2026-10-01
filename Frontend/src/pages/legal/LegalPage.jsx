@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react'
 import { LEGAL_CONTENT } from '../../data/legalData'
 import { TermsContent, PrivacyContent, LicensesContent } from '../../data/legalContent'
 import PageSEO from '../../seo/PageSEO'
-import { breadcrumbSchema } from '../../utils/seo'
+import { breadcrumbSchema, webPageSchema } from '../../utils/seo'
 
 const SUPPORT_EMAIL = 'ankitjaat00010@gmail.com'
 
@@ -42,6 +42,11 @@ const LegalPage = ({ type }) => {
   const seo = SEO_META[type]
 
   const schemas = [
+    webPageSchema({
+      title: seo.title,
+      description: seo.description,
+      path: location.pathname,
+    }),
     breadcrumbSchema([{ name: seo.title.split('|')[0].trim(), path: location.pathname }]),
   ]
 

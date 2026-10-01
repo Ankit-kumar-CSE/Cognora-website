@@ -7,7 +7,7 @@ import { ToastContext } from '../components/layout/Layout'
 import {
   APP_INFO, SYSTEM_REQUIREMENTS, INSTALL_STEPS, CHANGELOG
 } from '../data/appData'
-import { softwareAppSchema, breadcrumbSchema } from '../utils/seo'
+import { softwareAppSchema, breadcrumbSchema, webPageSchema } from '../utils/seo'
 
 const CopyButton = ({ text, label }) => {
   const [copied, setCopied] = useState(false)
@@ -46,6 +46,11 @@ const Download = () => {
 
   const schemas = [
     softwareAppSchema(),
+    webPageSchema({
+      title: 'Download Coggnora | Free Productivity App for Windows & macOS',
+      description: `Download Coggnora v${APP_INFO.version} for Windows and macOS. Free 7-day trial, no account required. System requirements and installation guide included.`,
+      path: '/download',
+    }),
     breadcrumbSchema([{ name: 'Download', path: '/download' }]),
   ]
 

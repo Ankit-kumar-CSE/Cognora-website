@@ -8,7 +8,7 @@ import WhyChooseUs from '../components/sections/WhyChooseUs'
 import FAQSection from '../components/sections/FAQSection'
 import Testimonials from '../components/sections/Testimonials'
 import CTABanner from '../components/sections/CTABanner'
-import { faqPageSchema, softwareAppSchema, organizationSchema, breadcrumbSchema } from '../utils/seo'
+import { faqPageSchema, softwareAppSchema, organizationSchema, breadcrumbSchema, webPageSchema } from '../utils/seo'
 import { FAQ_DATA } from '../data/appData'
 
 const Home = () => {
@@ -16,6 +16,11 @@ const Home = () => {
     softwareAppSchema(),
     organizationSchema(),
     faqPageSchema(FAQ_DATA.slice(0, 8)),
+    webPageSchema({
+      title: 'Coggnora — Your Sanctuary for Deep Work',
+      description: 'Block distractions, shield your focus, and unlock true deep work. Coggnora is a lightweight productivity app for Windows and macOS. Free to start, no account required.',
+      path: '/',
+    }),
     breadcrumbSchema([]),
   ]
 
@@ -24,6 +29,8 @@ const Home = () => {
       <PageSEO
         title="Coggnora — Your Sanctuary for Deep Work"
         description="Block distractions, shield your focus, and unlock true deep work. Coggnora is a lightweight productivity app for Windows and macOS. Free to start, no account required."
+        canonical="https://coggnora.app/"
+        ogImage="https://coggnora.app/assets/og-image.png"
         schemas={schemas}
       />
       <Hero />

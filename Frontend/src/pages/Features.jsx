@@ -8,7 +8,7 @@ import {
 import PageSEO from '../seo/PageSEO'
 import Badge from '../components/ui/Badge'
 import { FEATURES } from '../data/appData'
-import { softwareAppSchema, breadcrumbSchema } from '../utils/seo'
+import { softwareAppSchema, breadcrumbSchema, webPageSchema } from '../utils/seo'
 
 const ICON_MAP = { Shield, Timer, BarChart2, Globe, Coffee, Monitor }
 
@@ -24,6 +24,11 @@ const COLOR_MAP = {
 const Features = () => {
   const schemas = [
     softwareAppSchema(),
+    webPageSchema({
+      title: 'Features | Coggnora — Deep Work Productivity App',
+      description: 'Explore all Coggnora features: distraction blocking, Pomodoro timer, productivity analytics, browser extension, smart break mode, and cross-platform support.',
+      path: '/features',
+    }),
     breadcrumbSchema([{ name: 'Features', path: '/features' }]),
   ]
 

@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#f0f4ff" media="(prefers-color-scheme: light)" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://coggnora.app/" />
+    <link rel="canonical" data-seo="canonical" href="https://coggnora.app/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -41,6 +41,13 @@
     <meta name="twitter:title" content="Coggnora — Your Sanctuary for Deep Work" />
     <meta name="twitter:description" content="Block distractions, shield your focus, and unlock true deep work. Free to start." />
     <meta name="twitter:image" content="https://coggnora.app/assets/og-image.png" />
+
+    <!-- Additional SEO -->
+    <meta name="rating" content="general" />
+    <meta name="category" content="productivity, software" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="language" content="en-US" />
+    <meta name="geo.region" content="IN" />
 
     <!-- Google Search Console Verification (placeholder) -->
     <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
@@ -65,10 +72,14 @@
     })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
     -->
 
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
     <!-- Google Fonts — Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet" />
 
     <!-- JSON-LD: Organization -->
     <script type="application/ld+json">
@@ -77,11 +88,17 @@
       "@type": "Organization",
       "name": "Coggnora",
       "url": "https://coggnora.app",
-      "logo": "https://coggnora.app/assets/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://coggnora.app/assets/logo.png",
+        "width": 512,
+        "height": 512
+      },
       "description": "Coggnora builds productivity software to help people achieve deep focus and eliminate digital distractions.",
       "email": "ankitjaat00010@gmail.com",
       "sameAs": [
-        "https://github.com/Ankit-kumar-CSE"
+        "https://github.com/Ankit-kumar-CSE",
+        "https://linkedin.com/in/ankit-kumar-cse"
       ]
     }
     </script>
@@ -110,6 +127,9 @@
       "name": "Coggnora",
       "operatingSystem": "Windows, macOS",
       "applicationCategory": "ProductivityApplication",
+      "softwareVersion": "1.0.0",
+      "datePublished": "2026-07-01",
+      "dateModified": "2026-10-01",
       "offers": [
         {
           "@type": "Offer",
@@ -133,14 +153,17 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
-        "ratingCount": "500"
+        "ratingCount": "500",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "description": "Coggnora is a lightweight desktop productivity app that blocks distractions, tracks focus sessions, and helps you achieve deep work.",
       "url": "https://coggnora.app",
-      "image": "https://coggnora.app/assets/logo.png",
+      "image": "https://coggnora.app/assets/og-image.png",
       "author": {
         "@type": "Organization",
-        "name": "Coggnora"
+        "name": "Coggnora",
+        "url": "https://coggnora.app"
       }
     }
     </script>

@@ -4,7 +4,7 @@ import { Search, ChevronDown, MessageCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import PageSEO from '../seo/PageSEO'
 import { FAQ_DATA } from '../data/appData'
-import { faqPageSchema, breadcrumbSchema } from '../utils/seo'
+import { faqPageSchema, breadcrumbSchema, webPageSchema } from '../utils/seo'
 
 const CATEGORIES = ['All', ...new Set(FAQ_DATA.map((f) => f.category))]
 
@@ -66,6 +66,11 @@ const FAQPage = () => {
 
   const schemas = [
     faqPageSchema(FAQ_DATA),
+    webPageSchema({
+      title: 'FAQ | Coggnora — Frequently Asked Questions',
+      description: 'Find answers to common questions about Coggnora: features, pricing, privacy, platform support, installation, and more.',
+      path: '/faq',
+    }),
     breadcrumbSchema([{ name: 'FAQ', path: '/faq' }]),
   ]
 

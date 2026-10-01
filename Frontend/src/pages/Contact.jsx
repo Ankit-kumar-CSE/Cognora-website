@@ -4,7 +4,7 @@ import { Mail, Code2, ExternalLink, Send, Building2 } from 'lucide-react'
 import PageSEO from '../seo/PageSEO'
 import { ToastContext } from '../components/layout/Layout'
 import { APP_INFO } from '../data/appData'
-import { organizationSchema, breadcrumbSchema } from '../utils/seo'
+import { organizationSchema, breadcrumbSchema, contactPageSchema, webPageSchema } from '../utils/seo'
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
@@ -13,6 +13,12 @@ const Contact = () => {
 
   const schemas = [
     organizationSchema(),
+    contactPageSchema(),
+    webPageSchema({
+      title: 'Contact Us | Coggnora Support & Business Inquiries',
+      description: 'Get in touch with the Coggnora team for support, business inquiries, or feedback. We respond within 24-48 hours.',
+      path: '/contact',
+    }),
     breadcrumbSchema([{ name: 'Contact', path: '/contact' }]),
   ]
 

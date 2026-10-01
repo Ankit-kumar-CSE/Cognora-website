@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { BASE_URL } from '../utils/seo'
 
@@ -8,13 +8,13 @@ const DEFAULT_DESCRIPTION =
 /**
  * PageSEO — Dynamically updates page <head> with title, meta, OG, Twitter, canonical, and JSON-LD.
  *
- * Usage: <PageSEO title="Features | Coggnora" description="..." schemas={[...]} breadcrumbs={[...]} />
+ * Usage: <PageSEO title="Features | Coggnora" description="..." schemas={[...]} />
  */
 const PageSEO = ({
   title = 'Coggnora — Your Sanctuary for Deep Work',
   description = DEFAULT_DESCRIPTION,
   canonical,
-  ogImage = '/assets/logo.png',
+  ogImage = 'https://coggnora.app/assets/og-image.png',
   schemas = [],
   noindex = false,
 }) => {
@@ -22,57 +22,64 @@ const PageSEO = ({
   const canonicalUrl = canonical || BASE_URL + pathname
   const ogImageUrl = ogImage.startsWith('http') ? ogImage : BASE_URL + ogImage
 
+  // Stable serialisation of schemas to avoid infinite re-renders
+  // when callers create the array inline (new reference every render)
+  const schemasKey = JSON.stringify(schemas)
+  const schemasRef = useRef(schemas)
+  if (schemasRef.current !== schemas && JSON.stringify(schemasRef.current) !== schemasKey) {
+    schemasRef.current = schemas
+  }
+
   useEffect(() => {
     // ── Title ──
     document.title = title
 
-    // Helper to set or create a meta tag
-    const setMeta = (selector, content) => {
+    // Helper: set or create a <meta> tag
+    const setMeta = (selector, attrName, attrValue, content) => {
       let el = document.querySelector(selector)
       if (!el) {
         el = document.createElement('meta')
-        // Extract the attribute name and value from the selector
-        const match = selector.match(/\[([^\]=]+)=['"]([^'"]+)['"]\]/)
-        if (match) el.setAttribute(match[1], match[2])
+        el.setAttribute(attrName, attrValue)
         document.head.appendChild(el)
       }
       el.setAttribute('content', content)
     }
 
-    // Helper to set or create a link tag
-    const setLink = (rel, href) => {
-      let el = document.querySelector(`link[rel='${rel}']`)
+    // Helper: set or create a <link> tag identified by a data-seo attribute
+    const setCanonical = (href) => {
+      let el = document.querySelector("link[data-seo='canonical']")
       if (!el) {
         el = document.createElement('link')
-        el.setAttribute('rel', rel)
+        el.setAttribute('rel', 'canonical')
+        el.setAttribute('data-seo', 'canonical')
         document.head.appendChild(el)
       }
       el.setAttribute('href', href)
     }
 
     // ── Primary Meta ──
-    setMeta("meta[name='description']", description)
-    setMeta("meta[name='robots']", noindex ? 'noindex,nofollow' : 'index,follow')
+    setMeta("meta[name='description']", 'name', 'description', description)
+    setMeta("meta[name='robots']", 'name', 'robots', noindex ? 'noindex,nofollow' : 'index,follow')
 
     // ── Canonical ──
-    setLink('canonical', canonicalUrl)
+    setCanonical(canonicalUrl)
 
     // ── Open Graph ──
-    setMeta("meta[property='og:title']", title)
-    setMeta("meta[property='og:description']", description)
-    setMeta("meta[property='og:url']", canonicalUrl)
-    setMeta("meta[property='og:image']", ogImageUrl)
+    setMeta("meta[property='og:title']", 'property', 'og:title', title)
+    setMeta("meta[property='og:description']", 'property', 'og:description', description)
+    setMeta("meta[property='og:url']", 'property', 'og:url', canonicalUrl)
+    setMeta("meta[property='og:image']", 'property', 'og:image', ogImageUrl)
 
     // ── Twitter ──
-    setMeta("meta[name='twitter:title']", title)
-    setMeta("meta[name='twitter:description']", description)
-    setMeta("meta[name='twitter:image']", ogImageUrl)
+    setMeta("meta[name='twitter:title']", 'name', 'twitter:title', title)
+    setMeta("meta[name='twitter:description']", 'name', 'twitter:description', description)
+    setMeta("meta[name='twitter:image']", 'name', 'twitter:image', ogImageUrl)
 
     // ── Inject JSON-LD schemas ──
     // Remove previously injected dynamic schemas
     document.querySelectorAll('script[data-page-seo]').forEach((el) => el.remove())
 
-    schemas.forEach((schema, i) => {
+    schemasRef.current.forEach((schema, i) => {
       const script = document.createElement('script')
       script.type = 'application/ld+json'
       script.setAttribute('data-page-seo', String(i))
@@ -81,12 +88,12 @@ const PageSEO = ({
     })
 
     return () => {
-      // Cleanup dynamic schemas on unmount
       document.querySelectorAll('script[data-page-seo]').forEach((el) => el.remove())
     }
-  }, [title, description, canonicalUrl, ogImageUrl, noindex, schemas])
+  }, [title, description, canonicalUrl, ogImageUrl, noindex, schemasKey]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return null
 }
 
 export default PageSEO
+
