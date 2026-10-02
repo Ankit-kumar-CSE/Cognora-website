@@ -15,7 +15,7 @@ export const APP_INFO = {
   sha256Mac: 'b2e3f4a5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3',
   email: 'ankitjaat00010@gmail.com',
   github: 'https://github.com/Ankit-kumar-CSE',
-  linkedin: 'https://linkedin.com/in/ankit-kumar-cse',
+  linkedin: 'https://linkedin.com/in/ankit-kumar-8833a937b',
   website: 'https://coggnora.app',
 }
 

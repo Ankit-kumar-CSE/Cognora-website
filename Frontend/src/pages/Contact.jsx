@@ -159,7 +159,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm font-semibold text-[var(--color-text-primary)] mb-1">LinkedIn</p>
-                <p className="text-sm text-[var(--color-text-secondary)]">ankit-kumar-cse</p>
+                <p className="text-sm text-[var(--color-text-secondary)]">ankit-kumar-8833a937b</p>
               </div>
             </motion.a>
 

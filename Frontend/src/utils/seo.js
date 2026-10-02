@@ -104,7 +104,7 @@ export function organizationSchema() {
     email: 'ankitjaat00010@gmail.com',
     sameAs: [
       'https://github.com/Ankit-kumar-CSE',
-      'https://linkedin.com/in/ankit-kumar-cse',
+      'https://linkedin.com/in/ankit-kumar-8833a937b',
     ],
     description:
       'Coggnora builds productivity software to help people achieve deep focus and eliminate digital distractions.',
